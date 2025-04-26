@@ -1,6 +1,102 @@
 # Hourly Temperature Comparison Tool
 
-A robust tool for comparing historical hourly temperature data between cities over time. This application automates the collection, storage, and visualization of temperature data, providing insights into temperature differences between locations.
+A tool for comparing hourly temperature data between cities over time.
+
+## Project Overview
+
+This project automates the download, extraction, and storage of ten years of historical hourly temperature data and associated station metadata from fixed online sources. It provides a user-friendly dashboard for comparing and visualizing temperature differences between cities over user-defined periods.
+
+## Project Structure
+
+```
+hourly-temp-comparison/
+├── data/                  # Downloaded raw data and metadata
+├── db/                    # SQLite database files
+├── scripts/               # Data download and processing scripts
+├── dashboard/             # Dashboard UI code
+├── tests/                 # Automated tests
+├── Dockerfile
+├── requirements.txt
+└── README.md
+```
+
+## Setup Instructions
+
+### Prerequisites
+
+- Python 3.10+
+- Docker
+- Git
+
+### Local Development Setup
+
+1. Clone the repository:
+   ```bash
+   git clone <repository-url>
+   cd hourly-temp-comparison
+   ```
+
+2. Create and activate a virtual environment:
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   ```
+
+3. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. Initialize the database:
+   ```bash
+   python scripts/init_db.py
+   ```
+
+5. Run the application:
+   ```bash
+   python dashboard/app.py
+   ```
+
+### Docker Setup
+
+1. Build the Docker image:
+   ```bash
+   docker build -t temp-comparison .
+   ```
+
+2. Run the container:
+   ```bash
+   docker-compose up
+   ```
+
+## Development Workflow
+
+1. Create a new branch for your feature:
+   ```bash
+   git checkout -b feature/your-feature-name
+   ```
+
+2. Make your changes and commit them:
+   ```bash
+   git add .
+   git commit -m "Description of your changes"
+   ```
+
+3. Push your changes and create a pull request:
+   ```bash
+   git push origin feature/your-feature-name
+   ```
+
+## Testing
+
+Run the test suite:
+```bash
+pytest
+```
+
+## License
+
+[Add your license information here]
 
 ## Features
 
