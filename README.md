@@ -1,6 +1,136 @@
-# Hourly Temperature Comparison Tool
+# Compare-Temp
 
-A tool for comparing hourly temperature data between cities over time.
+A Python application for comparing temperature data from different weather stations.
+
+## Prerequisites
+
+- Python 3.10 or higher
+- Docker and Docker Compose
+- Git
+
+## Setup Instructions
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/yourusername/Compare-Temp.git
+cd Compare-Temp
+```
+
+### 2. Environment Setup
+
+1. Copy the environment example file:
+   ```bash
+   cp .env.example .env
+   ```
+
+2. Edit the `.env` file with your configuration:
+   ```bash
+   # Database Configuration
+   DATABASE_URL=sqlite:///db/weather.db
+   # For PostgreSQL:
+   # DATABASE_URL=postgresql://user:password@localhost:5432/weather_db
+
+   # Flask Configuration
+   FLASK_APP=app
+   FLASK_ENV=development
+   FLASK_DEBUG=1
+
+   # API Configuration
+   API_KEY=your_api_key_here
+   API_BASE_URL=https://api.example.com
+
+   # Logging Configuration
+   LOG_LEVEL=INFO
+   LOG_FILE=logs/app.log
+
+   # Docker Configuration
+   DOCKER_NETWORK=compare-temp-network
+   DOCKER_VOLUME=compare-temp-data
+   ```
+
+### 3. Docker Setup
+
+1. Build the Docker image:
+   ```bash
+   docker-compose build
+   ```
+
+2. Start the services:
+   ```bash
+   docker-compose up -d
+   ```
+
+3. Verify the services are running:
+   ```bash
+   docker-compose ps
+   ```
+
+### 4. Database Setup
+
+1. Initialize the database:
+   ```bash
+   docker-compose exec app python -c "from app.db import init_db; init_db()"
+   ```
+
+2. Verify the database is working:
+   ```bash
+   docker-compose exec app python -m pytest tests/test_db.py -v
+   ```
+
+### 5. Development Workflow
+
+1. Install development dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+2. Run tests:
+   ```bash
+   pytest
+   ```
+
+3. Run linting:
+   ```bash
+   flake8 .
+   ```
+
+4. Start the development server:
+   ```bash
+   flask run
+   ```
+
+## Project Structure
+
+```
+Compare-Temp/
+├── app/                    # Application code
+│   ├── db/                # Database models and utilities
+│   ├── api/               # API endpoints
+│   └── utils/             # Utility functions
+├── tests/                 # Test files
+├── data/                  # Data files
+├── db/                    # Database files
+├── .github/               # GitHub configuration
+│   └── workflows/         # CI/CD workflows
+├── .env.example           # Environment variables example
+├── docker-compose.yml     # Docker Compose configuration
+├── Dockerfile            # Docker configuration
+├── requirements.txt      # Python dependencies
+└── README.md            # This file
+```
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Commit your changes
+4. Push to the branch
+5. Create a Pull Request
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## Project Overview
 
