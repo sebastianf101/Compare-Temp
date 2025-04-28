@@ -249,20 +249,50 @@ pytest
 
 ## Technical Stack
 
-- **Backend**
-  - Python 3.10+
-  - pandas for data manipulation
-  - SQLite for data storage
-  - Flask for API endpoints
+- Python 3.10+
+- SQLite/PostgreSQL
+- Flask
+- Docker
+- Pandas
+- Matplotlib
+- Seaborn
 
-- **Frontend**
-  - React for dashboard UI
-  - Chart.js/Recharts for visualizations
+## Temperature Analysis
 
-- **Infrastructure**
-  - Docker for containerization
-  - GitHub Actions for CI/CD
-  - pytest for testing
+The project includes a comprehensive temperature analysis script that compares temperature data between Buenos Aires and Tandil. The analysis generates:
+
+1. **Combined Plot**: A 2x2 grid showing temperature comparisons for all seasons
+2. **Individual Season Plots**: Detailed plots for each season (Summer, Autumn, Winter, Spring)
+3. **Statistical Analysis**: For each season, the script calculates:
+   - Average temperature difference
+   - Maximum and minimum differences
+   - Hourly temperature statistics
+   - Mean and median differences
+
+### Key Findings
+
+- **Summer**: Average temperature difference of 4.46°C, with maximum difference of 7.30°C at 3:00
+- **Seasonal Variations**: Temperature differences vary significantly throughout the day and across seasons
+- **Data Range**: Analysis covers data from 2017 to 2025
+
+### How to Generate Plots
+
+1. Ensure you have the required data file:
+   ```bash
+   smn_historical_data.zip
+   ```
+
+2. Run the analysis script:
+   ```bash
+   python scripts/analyze_temperature_diff.py
+   ```
+
+3. View the generated plots in the `plots/` directory:
+   - `temperature_comparison_all_seasons.png`
+   - `temperature_comparison_summer.png`
+   - `temperature_comparison_autumn.png`
+   - `temperature_comparison_winter.png`
+   - `temperature_comparison_spring.png`
 
 ## Getting Started
 
